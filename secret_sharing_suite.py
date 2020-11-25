@@ -34,7 +34,7 @@ if selection == 1:
     msg = input('Insert secret message: ')
     n = int(input('Insert number of parties n: ')) # Number of parties/shares
 
-    q = 2**(len(msg)*8) # s, s1,..., s_n \in Z_q
+    q = 2**(len(msg)*8) # s, s1,..., s_n \in Z_q (this value is assumed to be known by the parties)
 
     # Convert msg to int
     s = string_to_int(msg)
@@ -63,7 +63,7 @@ elif selection == 2:
     n = int(input('Insert number of parties n: ')) # Number of parties
     t = int(input('Insert number of parties required to reconstruct the secret t: ')) # Number of parties required to reconstruct the secret
 
-    q = 2**(len(msg)*8) # s, s1,..., s_n \in Z_q
+    q = 2**(len(msg)*8) # s, s1,..., s_n \in Z_q (this value is assumed to be known by the parties)
 
     # Convert msg to int
     s = string_to_int(msg)
@@ -101,7 +101,7 @@ elif selection == 3:
     msg = input('Insert secret message: ')
     n = int(input('Insert number of parties n: ')) # Number of parties
 
-    q = 2**(len(msg)*8) # s, s1,..., s_n \in Z_q
+    q = 2**(len(msg)*8) # s, s1,..., s_n \in Z_q (this value is assumed to be known by the parties)
 
     # Convert msg to int
     s = string_to_int(msg)
