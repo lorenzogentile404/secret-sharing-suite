@@ -9,7 +9,7 @@ A Python script to play with different types of secret sharing:
 ## Examples of usage
 
 ### n-out-of-n secret sharing
-```
+```console
 user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py
 Select type of secret sharing:
 (1) n-out-of-n secret sharing
@@ -41,7 +41,7 @@ s_r = (s_1 + ... + s_n) % q
 s_r = 529836718428447222471796390999758048326993546175927353304353 => This is a secret message!
 ```
 ### t-out-of-n secret sharing
-```
+```console
 user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py
 Select type of secret sharing:
 (1) n-out-of-n secret sharing
@@ -77,7 +77,7 @@ s_r = (s_1 + ... + s_n) % q
 s_r = 529836718428447222471796390999758048326993546175927353304353 => This is a secret message!
 ```
 ### general access structure secret sharing
-```
+```console
 user@host:~/secret-sharing-suite$ python3 python3 secret_sharing_suite.py
 Select type of secret sharing:
 (1) n-out-of-n secret sharing
