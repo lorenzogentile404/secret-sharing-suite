@@ -10,7 +10,7 @@ A Python script to play with different types of secret sharing:
 
 ### n-out-of-n secret sharing
 ```
-user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py 
+user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py
 Select type of secret sharing:
 (1) n-out-of-n secret sharing
 (2) t-out-of-n secret sharing
@@ -20,24 +20,29 @@ Select type of secret sharing:
 n-out-of-n secret sharing
 
 Insert secret message: This is a secret message!
-Insert number of parties n: 3
+Insert number of parties n: 4
+Group Z_q with q = 1606938044258990275541962092341162602522202993782792835301376
 
-s_i: 529836718428447222471796390999758048326993546175927353304353
+s   = 529836718428447222471796390999758048326993546175927353304353
 
-Parties: [1, 2, 3]
-s_1: 631519157167820681430365047978303167154375732121345006359298
-s_2: 847850737790194400279938709133980823357035971160716282653838
-s_3: 657404867729422416303454726228636660337784836676658899592593
+Parties =  [1, 2, 3, 4]
+s_1,..., s_{n-1} <-$- Z_q
+s_n = (s - (s_1 + ... + s_{n-1})) % q
+s_1 = 817914728430332614209143214949107377860300844005888778691035
+s_2 = 145313392047642646036453930347879639059238885116921328377986
+s_3 = 755758932603553258688109479200183561363129400506854103187509
+s_4 = 417787709605908979080051858843750072566527410329055978349199
 Send s_1 to party 1
 Send s_2 to party 2
 Send s_3 to party 3
+Send s_4 to party 4
 
-s_r: 529836718428447222471796390999758048326993546175927353304353
-Reconstructed secret message: This is a secret message!
+s_r = (s_1 + ... + s_n) % q
+s_r = 529836718428447222471796390999758048326993546175927353304353 => This is a secret message!
 ```
 ### t-out-of-n secret sharing
 ```
-user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py 
+user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py
 Select type of secret sharing:
 (1) n-out-of-n secret sharing
 (2) t-out-of-n secret sharing
@@ -47,27 +52,33 @@ Select type of secret sharing:
 t-out-of-n secret sharing
 
 Insert secret message: This is a secret message!
-Insert number of parties n: 3
+Insert number of parties n: 4
 Insert number of parties required to reconstruct the secret t: 2
+Group Z_q with q = 1606938044258990275541962092341162602522202993782792835301376
 
-s_i: 529836718428447222471796390999758048326993546175927353304353
+s   = 529836718428447222471796390999758048326993546175927353304353
 
-Parties: [1, 2, 3]
-Secrecy structure PI (maximal unqualified sets): [[1], [2], [3]]
-hatT = P \ T_i with T_i \in PI: [[2, 3], [1, 3], [1, 2]]
-s_1: 980744588102789935147659000985711570473065812494697434563814
-s_2: 591920648007723199019988468479171551051910380225616178373938
-s_3: 564109526576924363846111013876037529324220347238406575667977
-Send s_1 to parties in hatT_1: [2, 3]
-Send s_2 to parties in hatT_2: [1, 3]
-Send s_3 to parties in hatT_3: [1, 2]
+Parties =  [1, 2, 3, 4]
+Secrecy structure PI (maximal unqualified sets) =  [[1], [2], [3], [4]]
+Access structure GAMMA (minimal qualified sets) =  [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
+hatT = P \ T_i with T_i \in PI =  [[2, 3, 4], [1, 3, 4], [1, 2, 4], [1, 2, 3]]
+s_1,..., s_{n-1} <-$- Z_q
+s_n = (s - (s_1 + ... + s_{n-1})) % q
+s_1 = 925169835384432937955312711009115986182093701172207045676629
+s_2 = 401302881428885489144048802123171617449532688680514577349044
+s_3 = 406991123064328225723394045830455401560902759380562673987451
+s_4 = 403310922809790845191002924378177645656667390725435891592605
+Send s_1 to parties in hatT_1 = [2, 3, 4]
+Send s_2 to parties in hatT_2 = [1, 3, 4]
+Send s_3 to parties in hatT_3 = [1, 2, 4]
+Send s_4 to parties in hatT_4 = [1, 2, 3]
 
-s_r: 529836718428447222471796390999758048326993546175927353304353
-Reconstructed secret message: This is a secret message!
+s_r = (s_1 + ... + s_n) % q
+s_r = 529836718428447222471796390999758048326993546175927353304353 => This is a secret message!
 ```
 ### general access structure secret sharing
 ```
-user@host:~/secret-sharing-suite$ python3 secret_sharing_suite.py 
+user@host:~/secret-sharing-suite$ python3 python3 secret_sharing_suite.py
 Select type of secret sharing:
 (1) n-out-of-n secret sharing
 (2) t-out-of-n secret sharing
@@ -78,22 +89,26 @@ general access structure secret sharing
 
 Insert secret message: This is a secret message!
 Insert number of parties n: 4
+Group Z_q with q = 1606938044258990275541962092341162602522202993782792835301376
 
-s_i: 529836718428447222471796390999758048326993546175927353304353
+s   = 529836718428447222471796390999758048326993546175927353304353
 
-Parties: [1, 2, 3, 4]
-Insert secrecy structure PI (maximal unqualified sets): [[1, 2], [1, 3], [2, 3], [4]]
-Secrecy structure PI (maximal unqualified sets): [[1, 2], [1, 3], [2, 3], [4]]
-hatT = P \ T_i with T_i \in PI: [[3, 4], [2, 4], [1, 4], [1, 2, 3]]
-s_1: 930498484205961274404947983597816134705089434447090211532930
-s_2: 136177387220825017673519069020193725047389490208322475613250
-s_3: 678136107205878343854210613019678983916912741357067991968860
-s_4: 391962784054772862081080817703231807179804873946239509490689
-Send s_1 to parties in hatT_1: [3, 4]
-Send s_2 to parties in hatT_2: [2, 4]
-Send s_3 to parties in hatT_3: [1, 4]
-Send s_4 to parties in hatT_4: [1, 2, 3]
+Parties =  [1, 2, 3, 4]
+Insert secrecy structure PI (maximal unqualified sets): [[1,2],[1,3],[2,3],[4]]
+Secrecy structure PI (maximal unqualified sets) =  [[1, 2], [1, 3], [2, 3], [4]]
+Access structure GAMMA (minimal qualified sets) =  [[1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4], [4, 1], [4, 2], [4, 3]]
+hatT = P \ T_i with T_i \in PI =  [[3, 4], [2, 4], [1, 4], [1, 2, 3]]
+s_1,..., s_{n-1} <-$- Z_q
+s_n = (s - (s_1 + ... + s_{n-1})) % q
+s_1 = 788992307122825458459287124426901644515118169142077942167435
+s_2 = 354342958127503155646430347994717505309344563776324740809949
+s_3 = 172303602897870039551241174711831198212947169444821200294137
+s_4 = 821135894539238844356799836207470302811786637595496305334208
+Send s_1 to parties in hatT_1 = [3, 4]
+Send s_2 to parties in hatT_2 = [2, 4]
+Send s_3 to parties in hatT_3 = [1, 4]
+Send s_4 to parties in hatT_4 = [1, 2, 3]
 
-s_r: 529836718428447222471796390999758048326993546175927353304353
-Reconstructed secret message: This is a secret message!
+s_r = (s_1 + ... + s_n) % q
+s_r = 529836718428447222471796390999758048326993546175927353304353 => This is a secret message!
 ```
